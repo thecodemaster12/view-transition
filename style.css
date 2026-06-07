@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
+:root {
+  --font-roboto: "Roboto", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-ubuntu: "Ubuntu", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-primary: #3b82f6;
+  --color-secondary: #0f172a;
+  --color-tertiary: #f59e0b;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-roboto);
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 0.5px solid #ccc;
+  /* box-shadow: 0px 0px 6px #000; */
+}
+
+.logo a {
+  font-family: var(--font-montserrat);
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li a {
+  color: var(--color-secondary);
+  display: inline-block;
+  font-size: 1.2rem;
+  font-family: var(--font-ubuntu);
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+nav ul li a:hover {
+  color: var(--color-secondary);
+  background: var(--color-tertiary);
+}
+
+.site-footer {
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+}
+
+.site-footer .footer-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-nav a {
+  background-color: #fff;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-footer .logo {
+  /* color: #fff; */
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.page-content .title {
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+
+.page-content p {
+  text-wrap: pretty;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* =====================
+   View Transition
+   ===================== */
+
+/* 1. Enable cross-document transitions */
+@view-transition {
+  navigation: auto;
+}
+
+/* 2. The name here MUST match the view-transition-name on the element below */
+::view-transition-group(page-to-slide) {
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(page-to-slide) {
+  animation-name: slide-out;
+}
+
+::view-transition-new(page-to-slide) {
+  animation-name: slide-in;
+}
+
+/* FIX: view-transition-name is now on .page-to-slide, matching the pseudo-selectors above */
+.page-to-slide {
+  view-transition-name: page-to-slide;
+}
+
+@keyframes slide-out {
+  to {
+    translate: -100vw;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: 100vw;
+  }
+}
+
+/* Contact Page */
+.contact-form {
+  background-color: #ddd;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 400px;
+  padding: 12px;
+}
+
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: white;
+  padding: 0 4px;
+}
+
+.input-group input:focus + label,
+.input-group textarea:focus + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+button[type="submit"] {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Contact Page */
